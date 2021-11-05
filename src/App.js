@@ -1,23 +1,23 @@
-import logo from './logo.svg';
+import React, { useEffect } from "react";
+import Calculator from "./Calculator";
 import './App.css';
 
 function App() {
+  useEffect(() => {
+    const script = document.createElement('script');
+
+    script.src = "https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js";
+    script.async = true;
+
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    }
+  }, [])
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Calculator />
     </div>
   );
 }
